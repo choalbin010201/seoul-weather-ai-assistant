@@ -1,1 +1,289 @@
-*{box-sizing:border-box}body{margin:0;background:#f4f6f8;color:#1f2937;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}header{background:#172033;color:white;padding:28px max(20px,calc((100% - 1120px)/2))}header h1{margin:0 0 6px}header p{margin:0;color:#cbd5e1}.layout{max-width:1120px;margin:22px auto;padding:0 16px;display:grid;grid-template-columns:1fr 2fr;gap:18px}.card{background:white;border-radius:14px;padding:20px;box-shadow:0 3px 16px #0001}.wide{grid-column:1/-1}.metric{display:flex;justify-content:space-between;padding:9px 0;border-bottom:1px solid #eee}.messages{height:280px;overflow:auto;border:1px solid #ddd;border-radius:10px;padding:10px}.message{padding:10px;margin:8px 0;border-radius:10px;white-space:pre-wrap}.user{background:#dbeafe;text-align:right}.assistant{background:#eef1f4}.chat-input{display:flex;gap:8px;margin-top:10px}.chat-input input{flex:1}input,button{padding:10px;border:1px solid #ccc;border-radius:8px}button{background:#172033;color:white;border:0;cursor:pointer}form{display:grid;grid-template-columns:160px 160px 1fr auto;gap:8px}.table-wrap{max-height:420px;overflow:auto}table{width:100%;border-collapse:collapse}th,td{padding:9px;border-bottom:1px solid #eee;text-align:left}.conv{display:flex;gap:8px;align-items:center;border:1px solid #ddd;padding:10px;border-radius:8px;margin:7px 0}.conv-title{flex:1;cursor:pointer}.danger{background:#9f1239}.error{color:#b91c1c}.loading{opacity:.65}.hint{font-size:13px;color:#64748b}@media(max-width:800px){.layout{grid-template-columns:1fr}.wide{grid-column:auto}form{grid-template-columns:1fr}.chat-input{flex-direction:column}}
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    background: #f4f6f8;
+    color: #1f2937;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+/* ==============================
+   헤더
+============================== */
+
+header {
+    background: #172033;
+    color: white;
+    padding: 28px max(20px, calc((100% - 1120px) / 2));
+}
+
+header h1 {
+    margin: 0 0 6px;
+}
+
+header p {
+    margin: 0;
+    color: #cbd5e1;
+}
+
+/* ==============================
+   전체 레이아웃
+============================== */
+
+.layout {
+    max-width: 1120px;
+    margin: 22px auto;
+    padding: 0 16px;
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 18px;
+}
+
+.card {
+    background: white;
+    border-radius: 14px;
+    padding: 20px;
+    box-shadow: 0 3px 16px #0001;
+}
+
+.wide {
+    grid-column: 1 / -1;
+}
+
+/* ==============================
+   데이터 요약
+============================== */
+
+.metric {
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 9px 0;
+    border-bottom: 1px solid #eee;
+}
+
+.metric span {
+    text-align: right;
+}
+
+/* ==============================
+   AI 채팅
+============================== */
+
+.messages {
+    height: 280px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 12px;
+
+    display: flex;
+    flex-direction: column;
+}
+
+/* 공통 말풍선 */
+.message {
+    padding: 10px 14px;
+    margin: 5px 0;
+    border-radius: 10px;
+
+    white-space: pre-wrap;
+    overflow-wrap: break-word;
+    word-break: keep-all;
+
+    line-height: 1.5;
+}
+
+/* 사용자 메시지 */
+.message.user {
+    background: #dbeafe;
+
+    align-self: flex-end;
+
+    width: fit-content;
+    max-width: 80%;
+
+    text-align: left;
+
+    border-bottom-right-radius: 4px;
+}
+
+/* AI 메시지 */
+.message.assistant {
+    background: #eef1f4;
+
+    align-self: flex-start;
+
+    width: fit-content;
+    max-width: 90%;
+
+    text-align: left;
+
+    border-bottom-left-radius: 4px;
+}
+
+/* AI 답변의 굵은 글씨 */
+.message.assistant strong {
+    font-weight: 700;
+}
+
+/* 로딩 메시지 */
+.message.loading {
+    opacity: 0.65;
+}
+
+/* 오류 메시지 */
+.message.error {
+    color: #b91c1c;
+}
+
+/* 채팅 입력창 */
+.chat-input {
+    display: flex;
+    gap: 8px;
+    margin-top: 10px;
+}
+
+.chat-input input {
+    flex: 1;
+    min-width: 0;
+}
+
+/* ==============================
+   입력창 / 버튼
+============================== */
+
+input,
+button {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+}
+
+input {
+    background: white;
+    color: #1f2937;
+}
+
+button {
+    background: #172033;
+    color: white;
+    border: 0;
+    cursor: pointer;
+}
+
+button:hover {
+    opacity: 0.9;
+}
+
+/* ==============================
+   데이터 추가 / 수정 폼
+============================== */
+
+form {
+    display: grid;
+    grid-template-columns: 160px 160px 1fr auto;
+    gap: 8px;
+}
+
+/* ==============================
+   데이터 테이블
+============================== */
+
+.table-wrap {
+    max-height: 420px;
+    overflow: auto;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th,
+td {
+    padding: 9px;
+    border-bottom: 1px solid #eee;
+    text-align: left;
+}
+
+/* ==============================
+   대화 기록
+============================== */
+
+.conv {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+
+    border: 1px solid #ddd;
+    padding: 10px;
+    border-radius: 8px;
+    margin: 7px 0;
+}
+
+.conv-title {
+    flex: 1;
+    cursor: pointer;
+
+    overflow-wrap: break-word;
+}
+
+.conv-title:hover {
+    text-decoration: underline;
+}
+
+/* ==============================
+   기타
+============================== */
+
+.danger {
+    background: #9f1239;
+}
+
+.error {
+    color: #b91c1c;
+}
+
+.loading {
+    opacity: 0.65;
+}
+
+.hint {
+    font-size: 13px;
+    color: #64748b;
+}
+
+/* ==============================
+   모바일
+============================== */
+
+@media (max-width: 800px) {
+
+    .layout {
+        grid-template-columns: 1fr;
+    }
+
+    .wide {
+        grid-column: auto;
+    }
+
+    form {
+        grid-template-columns: 1fr;
+    }
+
+    .chat-input {
+        flex-direction: column;
+    }
+
+    .message.user {
+        max-width: 90%;
+    }
+
+    .message.assistant {
+        max-width: 95%;
+    }
+}
