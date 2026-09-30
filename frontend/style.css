@@ -103,10 +103,14 @@ header p {
 
     align-self: flex-end;
 
-    width: fit-content;
-    max-width: 80%;
+    width: auto;
+    max-width: 90%;
 
     text-align: left;
+
+    white-space: normal;
+    word-break: keep-all;
+    overflow-wrap: normal;
 
     border-bottom-right-radius: 4px;
 }
